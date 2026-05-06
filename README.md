@@ -13,15 +13,18 @@ def show_progress():
      print(f"it has passed {obstacle_count} out of {number_of_obstacles}")
      obstacle_count += 1
      return obstcle_count
+def check_move():
+    if obstacle_count == 0 or 2:
+        moves.move_right(10) 
+    elif obstacle_count == 1 or 3:
+        moves.move_left(10) 
+moves.forward(1)
+obstacle_count += 1
 def choose_move():
  if sonar.get_distance_cm(filtered=True) > warning_distance:
   moves.forward(0.5)
- elif sonar.get_distance_cm(filtered=True) < warning_distance: 
-  moves.move_left(1)
- elif sonar.get_distance_cm(filtered=True) == warning_distance:
-  moves.move_right(1)
- else: sonar.get_distance_cm(filtered=True) == 0
- moves.forward(0.1)
+ elif sonar.get_distance_cm(filtered=True) < warning_distance:
+     check_move()
 # Loop ideas
 while obstacle_count < number_of_obstacles:
  choose_move()
