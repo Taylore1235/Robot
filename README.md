@@ -7,9 +7,9 @@ number_of_obstacles = 4
 obstacle_count = 0
 warning_distance = 15
 dict = {
-    "yellow": (0, 0, 255)
-    "blue": (0, 255, 0)
-    "red": (255, 0, 0)
+    "yellow": "(0, 0, 255)"
+    "blue" "(0, 255, 0)"
+    "red" "(255, 0, 0)"
 }
 # Function ideas
 def show_progress():
