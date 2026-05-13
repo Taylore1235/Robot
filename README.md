@@ -1,12 +1,16 @@
 # Robot
-my code to make a robot move around a group of objects
+# my code to make a robot move around a group of objects
 from lesson_header import *
 
 # Variables
 number_of_obstacles = 4
 obstacle_count = 0
 warning_distance = 15
-
+dict = {
+    "yellow": (0, 0, 255)
+    "blue": (0, 255, 0)
+    "red": (255, 0, 0)
+}
 # Function ideas
 def show_progress():
      print(f"it has passed {obstacle_count} out of {number_of_obstacles}")     
@@ -14,9 +18,12 @@ def check_move():
     global obstacle_count
     if (obstacle_count == 0 or obstacle_count == 2):
         moves.move_right(1.5) 
+        eyes.set_both(dict["yellow"]) 
     elif (obstacle_count == 1 or obstacle_count == 3):
-        moves.move_left(1.5) 
-    moves.forward(1) 
+        moves.move_left(1.5)
+        eyes.set_both(dict["red"])
+    moves.forward(1)
+    eyes.set_both(dict["blue"])
     obstacle_count += 1 
   #  return obstacle_count
 def choose_move():
