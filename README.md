@@ -4,12 +4,11 @@ from lesson_header import *
 
 # Variables
 number_of_obstacles = 4
-obstacle_count = 0
 warning_distance = 15
+obstacle_count = 0
 dict = {
-    "yellow": "(0, 0, 255)",
-    "blue" "(0, 255, 0)",
-    "red" "(255, 0, 0)"
+    "blue": (0, 0, 255),
+    "red": (255, 0, 0)
 }
 # Function ideas
 def show_progress():
@@ -17,15 +16,13 @@ def show_progress():
 def check_move():
     global obstacle_count
     if (obstacle_count == 0 or obstacle_count == 2):
-        moves.move_right(1.5) 
-        eyes.set_both(dict["yellow"]) 
+        moves.move_right(1.5)
+        eyes.set_both(*dict["blue"])
     elif (obstacle_count == 1 or obstacle_count == 3):
         moves.move_left(1.5)
-        eyes.set_both(dict["red"])
+        eyes.set_both(*dict["red"])
     moves.forward(1)
-    eyes.set_both(dict["blue"])
-    obstacle_count += 1 
-  #  return obstacle_count
+    obstacle_count += 1
 def choose_move():
  while obstacle_count < number_of_obstacles:
     if sonar.get_distance_cm(filtered=True) > warning_distance:
