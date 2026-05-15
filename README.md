@@ -1,5 +1,4 @@
 # Robot
-# my code to make a robot move around a group of objects
 from lesson_header import *
 
 # Variables
@@ -16,11 +15,13 @@ def show_progress():
 def check_move():
     global obstacle_count
     if (obstacle_count == 0 or obstacle_count == 2):
-        moves.move_right(1.5)
         eyes.set_both(*dict["blue"])
+        dict["blue"] = 0, 0, 120
+        moves.move_right(1.5)
     elif (obstacle_count == 1 or obstacle_count == 3):
-        moves.move_left(1.5)
         eyes.set_both(*dict["red"])
+        dict["red"] = 120, 0, 0
+        moves.move_left(1.5)
     moves.forward(1)
     obstacle_count += 1
 def choose_move():
